@@ -61,17 +61,13 @@
 
 </div>
 
-<!-- FOOTER -->
-<div style="background:#f0f0f0; padding:20px; text-align:center; font-size:14px; color:#555;">
-    © 2026 
-    <a href="https://wepaythefreight.com" 
-       style="color:#555; text-decoration:none;"
-       onmouseover="this.style.color='blue'; this.style.textDecoration='underline';"
-       onmouseout="this.style.color='#555'; this.style.textDecoration='none';">
-       WePayTheFreight.com
-    </a>
-    — All shipping still free.
-</div>
+<!-- FOOTER LOADER -->
+<footer id="footer"></footer>
+<script>
+fetch('/footer.html')
+  .then(r => r.text())
+  .then(h => footer.innerHTML = h);
+</script>
 
 </body>
 </html>
