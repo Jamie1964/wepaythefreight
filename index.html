@@ -65,7 +65,15 @@
     font-style:italic;
 ">
 
-    <h1 style="font-size:34px; color:#ffffff; font-style:italic; margin-top:0;">
+    <!-- UPDATED TITLE (jamiespages style) -->
+    <h1 style="
+        font-size:34px;
+        color:#b366ff;
+        font-family:'Roboto Condensed', sans-serif;
+        font-style:italic;
+        font-weight:bold;
+        margin-top:0;
+    ">
         our first creation:
     </h1>
 
@@ -137,24 +145,19 @@
 
 </div>
 
-<!-- TIMESTAMP ABOVE FOOTER -->
+<!-- TIMESTAMP -->
 <div id="page-updated" style="text-align:center;color:#888;margin-top:20px;">
-    last updated : June 6, 2026 — 1:12 PM MDT
+    last updated : June 6, 2026 — 1:31 PM MDT
 </div>
 
-<!-- ADMIN TOYS: METADATA SYSTEM -->
+<!-- ADMIN TOYS -->
 <script>
-// UNIQUE PAGE ID
 const PAGE_ID = "wptf-index";
-
-// METADATA KEY
 const META_KEY = PAGE_ID + "-metadata";
 
-// Load or create metadata
 let meta = localStorage.getItem(META_KEY);
 meta = meta ? JSON.parse(meta) : {};
 
-// Default metadata
 meta.pageName    = "WPTF Index";
 meta.category    = "landing";
 meta.version     = meta.version || "1.0.0";
@@ -171,29 +174,25 @@ meta.redesign    = false;
 meta.health      = 1;
 meta.lastVisited = new Date().toLocaleString();
 
-// Save metadata
 localStorage.setItem(META_KEY, JSON.stringify(meta));
 
-// Error logger
 window.onerror = function(msg, url, line) {
     meta.errors = msg + " @ line " + line;
     localStorage.setItem(META_KEY, JSON.stringify(meta));
 };
 </script>
 
-<!-- PER-PAGE COUNTER -->
+<!-- COUNTER -->
 <div id="page-counter" style="text-align:center;color:#888;margin-top:10px;">
     views: loading...
 </div>
 
 <script>
 const COUNTER_KEY = PAGE_ID + "-views";
-
 let views = localStorage.getItem(COUNTER_KEY);
 if (!views) views = 0;
 views++;
 localStorage.setItem(COUNTER_KEY, views);
-
 document.getElementById("page-counter").textContent = "views: " + views;
 </script>
 

@@ -16,3 +16,19 @@
     creation
 
 </div>
+
+<!-- INVISIBLE FOOTER LOAD COUNTER -->
+<script>
+// GLOBAL FOOTER LOAD COUNTER
+const FOOTER_KEY = "wptf-footer-loads";
+
+// Load or initialize
+let fcount = localStorage.getItem(FOOTER_KEY);
+if (!fcount) fcount = 0;
+
+// Increment
+fcount++;
+localStorage.setItem(FOOTER_KEY, fcount);
+
+// No visible output — fully invisible
+</script>
