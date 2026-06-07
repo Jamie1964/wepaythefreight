@@ -99,11 +99,13 @@
         currently under construction
     </h2>
 
-    <!-- FREE TOOLS CARD -->
-    <div style="display:flex;justify-content:center;margin-top:20px;">
+    <!-- FREE TOOLS CARD (FIXED FLEXBOX) -->
+    <div style="display:flex;justify-content:center;gap:20px;margin-top:20px;flex-wrap:wrap;">
+
         <a href="tools.html" style="text-decoration:none;">
             <div style="width:260px;background:#1a0f1a;padding:20px;border-radius:10px;
                         border:2px solid #0096FF;box-shadow:0 0 20px #0096FF;text-align:center;">
+
                 <h3 style="color:#0096FF;margin:0 0 10px;font-size:26px;font-weight:bold;">
                     Free Tools
                 </h3>
@@ -117,11 +119,19 @@
                     </a> - I use this so I never miss a free poker tournament...
                 </p>
 
-                <div id="tools-updated-here" style="color:#0096FF;font-size:14px;margin-top:10px;"></div>
+                <p style="color:#ffffff;font-size:15px;font-style:italic; text-align:left;">
+                    <a href="https://arachnoid.com/arachnophilia/" 
+                       style="color:#ffffff;text-decoration:underline;"
+                       onmouseover="this.style.color='#0096FF';"
+                       onmouseout="this.style.color='#ffffff';">
+                        Arachnophilia
+                    </a> - The classic WYSIWYG HTML editor I've used for 30 years so far.
+                </p>
 
             </div>
         </a>
-    </div>
+
+    </div> <!-- END FLEX ROW -->
 
 
     <h2 style="
@@ -225,7 +235,7 @@
 
 <!-- TIMESTAMP -->
 <div id="page-updated" style="text-align:center;color:#888;margin-top:20px;">
-    last updated : June 6, 2026 — 9:06 PM MDT
+    last updated: June 6, 2026 — 9:06 PM MDT
 </div>
 
 
