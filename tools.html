@@ -87,10 +87,15 @@
         <a href="tools.html" style="text-decoration:none;">
             <div style="width:260px;background:#1a0f1a;padding:20px;border-radius:10px;
                         border:2px solid #0096FF;box-shadow:0 0 20px #0096FF;text-align:center;">
-                <h3 style="color:#0096FF;margin:0 0 10px;font-size:26px;font-weight:bold;">
+
+                <!-- UPDATED: 2pt larger + bold -->
+                <h3 style="color:#0096FF;margin:0 0 10px;
+                           font-size:28px;
+                           font-weight:bold;">
                     Free Tools
                 </h3>
 
+                <!-- DESCRIPTION (unchanged) -->
                 <p style="color:#ffffff;font-size:15px;font-style:italic; text-align:left;">
                     <a href="https://freealarmapp.com/" 
                        style="color:#ffffff;text-decoration:underline;"
@@ -100,9 +105,9 @@
                     </a> - I use this so I never miss a free poker tournament...
                 </p>
 
-                <!-- TIMESTAMP FOR HOMEPAGE -->
-                <div id="tools-updated" style="color:#0096FF;font-size:14px;margin-top:10px;">
-                    last updated : June 6, 2026 — 9:06 PM MDT
+                <!-- TIMESTAMP NOW WHITE -->
+                <div id="tools-updated" style="color:#ffffff;font-size:14px;margin-top:10px;">
+                    June 6, 2026 — 9:06 PM MDT
                 </div>
 
             </div>
@@ -238,7 +243,7 @@
 </div>
 
 <script>
-const PAGE_ID = "wptf-index";
+const PAGE_ID = "wptf-tools";
 const COUNTER_KEY = PAGE_ID + "-views";
 let views = localStorage.getItem(COUNTER_KEY);
 if (!views) views = 0;
