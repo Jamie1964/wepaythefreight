@@ -313,22 +313,33 @@ async function buildSidebar() {
     const pages = data.pages || [];
 
     /* HIDE RULES */
-    const HIDDEN = [
+    const HIDDEN_FOLDERS = [
+        "amin",
+        "images"
+    ];
+
+    const HIDDEN_FILES = [
         "FULL WPTF TEMPLATE WITH ALL ADMIN TOYS.html",
+        "tools - Copy.html",
         "footer.html",
         "index2.html",
-        "tools - Copy.html",
-        "copilotbackupentrances.html",
-        "amin" // hide entire folder
+        "copilotbackupentrances.html"
     ];
 
     const allowed = pages.filter(path => {
 
-        // Hide ALL index.html except the homepage
-        if (path.endsWith("index.html") && path !== "index.html") return false;
+        const parts = path.split("/");
+        const isFolder = parts.length === 1 && !path.includes(".");
+        const isFile = path.includes("/");
 
-        // Hide any file or folder in the HIDDEN list
-        if (HIDDEN.some(h => path === h || path.startsWith(h + "/"))) return false;
+        // Hide entire folders
+        if (HIDDEN_FOLDERS.some(f => path === f || path.startsWith(f + "/"))) return false;
+
+        // Hide specific admin-only files
+        if (HIDDEN_FILES.includes(path)) return false;
+
+        // Hide ALL folder index.html files except homepage
+        if (isFile && path.endsWith("index.html") && path !== "index.html") return false;
 
         return true;
     });
