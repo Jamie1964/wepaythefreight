@@ -12,7 +12,7 @@
 <body style="margin:0;background:#e8f3ff;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
 
-<!-- SIDEBAR CONTAINER -->
+<!-- SIDEBAR -->
 <div id="sidebar" style="
     width:260px;
     background:#111;
@@ -25,9 +25,11 @@
     padding:15px;
     box-shadow:0 0 20px #000;
     z-index:9999;
+    font-family:Arial, sans-serif;
 "></div>
 
-<!-- PAGE CONTENT WRAPPER (SHIFTED RIGHT FOR SIDEBAR) -->
+
+<!-- PAGE CONTENT WRAPPER -->
 <div style="margin-left:260px;">
 
 
@@ -299,12 +301,36 @@ fetch('/footer.html')
 </div> <!-- END PAGE WRAPPER -->
 
 
-<!-- SIDEBAR LOADER -->
+<!-- WORKER‑POWERED SIDEBAR -->
 <script>
 async function buildSidebar() {
     const sidebar = document.getElementById("sidebar");
 
-    // TEMPORARY STATIC SIDEBAR (until Worker is connected)
+    let data;
+    try {
+        const res = await fetch("/api/pages");
+        data = await res.json();
+    } catch (e) {
+        sidebar.innerHTML = "<p style='color:#f66;'>Sidebar failed to load.</p>";
+        return;
+    }
+
+    const pages = data.pages || [];
+    const groups = {};
+
+    pages.forEach(path => {
+        const parts = path.split("/");
+        if (parts.length === 1) {
+            if (!groups["_root"]) groups["_root"] = [];
+            groups["_root"].push(parts[0]);
+        } else {
+            const folder = parts[0];
+            const file = parts.slice(1).join("/");
+            if (!groups[folder]) groups[folder] = [];
+            groups[folder].push(file);
+        }
+    });
+
     sidebar.innerHTML = `
         <h2 style="color:#b366ff;font-family:'Roboto Condensed',sans-serif;font-style:italic;margin-top:0;">
             WPTF Menu
@@ -314,20 +340,52 @@ async function buildSidebar() {
             Home
         </a>
 
-        <div style="margin-top:20px;font-weight:bold;color:#b366ff;">Tools ▼</div>
-        <div style="margin-left:10px;margin-top:5px;">
-            <a href="/tools.html" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">Tools Page</a>
-        </div>
-
-        <div style="margin-top:20px;font-weight:bold;color:#b366ff;">Future Sites ▼</div>
-        <div style="margin-left:10px;margin-top:5px;">
-            <a href="/directory.html" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">Free Shipping Directory</a>
-            <a href="/everythingfree.html" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">Everything Free</a>
-            <a href="/coupons.html" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">Free Shipping Coupons</a>
-            <a href="/brands.html" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">Brand Directory</a>
-            <a href="/marketplace.html" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">Marketplace</a>
-        </div>
+        <a href="#worker" style="color:#b366ff;text-decoration:none;display:block;margin:10px 0;">
+            Add the Worker version
+        </a>
     `;
+
+    function addGroup(title, items, base="") {
+        const header = document.createElement("div");
+        header.textContent = title + " ▼";
+        header.style.marginTop = "20px";
+        header.style.fontWeight = "bold";
+        header.style.color = "#b366ff";
+        header.style.cursor = "pointer";
+
+        const list = document.createElement("div");
+        list.style.marginLeft = "10px";
+        list.style.marginTop = "5px";
+
+        items.forEach(item => {
+            const link = document.createElement("a");
+            link.href = "/" + (base ? base + "/" + item : item);
+            link.textContent = item;
+            link.style.color = "#fff";
+            link.style.textDecoration = "none";
+            link.style.display = "block";
+            link.style.margin = "6px 0";
+            list.appendChild(link);
+        });
+
+        header.onclick = () => {
+            const hidden = list.style.display === "none";
+            list.style.display = hidden ? "block" : "none";
+            header.textContent = title + (hidden ? " ▼" : " ▲");
+        };
+
+        sidebar.appendChild(header);
+        sidebar.appendChild(list);
+    }
+
+    if (groups["_root"]) addGroup("Site Pages", groups["_root"]);
+
+    Object.keys(groups)
+        .filter(k => k !== "_root")
+        .sort()
+        .forEach(folder => {
+            addGroup(folder.charAt(0).toUpperCase() + folder.slice(1), groups[folder], folder);
+        });
 }
 
 buildSidebar();
