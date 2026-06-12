@@ -61,14 +61,21 @@
 </div>
 
 
-<!-- CONTENT -->
-<div style="max-width:900px;margin:0 auto 40px;color:#333;background:#fff;
-            padding:20px;border-radius:10px;border:2px solid #0096FF;line-height:1.6;">
-    <h2 style="color:#0096FF;font-size:26px;margin-top:0;">Browse All Comedians</h2>
-    <p>
-        This page displays the full comedy directory using the same dynamic sidebar system as the rest of the site.
-        All folders are expanded by default, but you can click any folder name to collapse or expand it.
-    </p>
+<!-- MAIN CONTENT TREE VIEW -->
+<div id="tree" style="
+    max-width:900px;
+    margin:0 auto 40px;
+    color:#333;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    border:2px solid #0096FF;
+    line-height:1.6;
+">
+    <h2 style="color:#0096FF;font-size:26px;margin-top:0;">All Comedy Files & Folders</h2>
+    <p>This is the full directory tree, expanded by default.</p>
+
+    <div id="tree-content" style="margin-top:20px;"></div>
 </div>
 
 
@@ -178,6 +185,93 @@ async function buildSidebar() {
 }
 
 buildSidebar();
+</script>
+
+
+<!-- MAIN CONTENT TREE VIEW LOADER -->
+<script>
+async function buildTree() {
+    const container = document.getElementById("tree-content");
+
+    let data;
+    try {
+        const res = await fetch("https://wepaythefreight.com/api/pages");
+        data = await res.json();
+    } catch (e) {
+        container.innerHTML = "<p style='color:red;'>Failed to load directory tree.</p>";
+        return;
+    }
+
+    const pages = data.pages || [];
+
+    const HIDDEN_FOLDERS = ["amin","images"];
+    const HIDDEN_FILES = [
+        "FULL WPTF TEMPLATE WITH ALL ADMIN TOYS.html",
+        "tools - Copy.html",
+        "footer.html",
+        "index2.html",
+        "copilotbackupentrances.html"
+    ];
+
+    const allowed = pages.filter(path => {
+        const parts = path.split("/");
+        const isFile = path.includes("/");
+
+        if (HIDDEN_FOLDERS.some(f => path === f || path.startsWith(f + "/"))) return false;
+        if (HIDDEN_FILES.includes(path)) return false;
+        if (isFile && path.endsWith("index.html") && path !== "index.html") return false;
+
+        return true;
+    });
+
+    const groups = {};
+    allowed.forEach(path => {
+        const parts = path.split("/");
+        if (parts.length === 1) {
+            if (!groups["_root"]) groups["_root"] = [];
+            groups["_root"].push(parts[0]);
+        } else {
+            const folder = parts[0];
+            const file = parts.slice(1).join("/");
+            if (!groups[folder]) groups[folder] = [];
+            groups[folder].push(file);
+        }
+    });
+
+    let html = "";
+
+    if (groups["_root"]) {
+        html += `<h3 style="color:#0096FF;">Root Files</h3>`;
+        html += `<ul>`;
+        groups["_root"].forEach(page => {
+            html += `<li><a href="https://wepaythefreight.com/${page}">${page}</a></li>`;
+        });
+        html += `</ul>`;
+    }
+
+    Object.keys(groups).forEach(folder => {
+        if (folder === "_root") return;
+
+        html += `
+            <div style="margin-top:20px;">
+                <div style="font-weight:bold;color:#b366ff;cursor:pointer;"
+                     onclick="this.nextElementSibling.style.display =
+                     (this.nextElementSibling.style.display === 'none' ? 'block' : 'none');">
+                    ${folder} ▼
+                </div>
+                <ul style="margin-left:20px;display:block;">
+                    ${groups[folder].map(f => `
+                        <li><a href="https://wepaythefreight.com/${folder}/${f}">${f}</a></li>
+                    `).join("")}
+                </ul>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+buildTree();
 </script>
 
 
