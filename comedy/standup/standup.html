@@ -67,7 +67,7 @@
     <h2 style="color:#0096FF;font-size:26px;margin-top:0;">Browse All Comedians</h2>
     <p>
         This page displays the full comedy directory using the same dynamic sidebar system as the rest of the site.
-        All folders are expanded by default for fast browsing.
+        All folders are expanded by default, but you can click any folder name to collapse or expand it.
     </p>
 </div>
 
@@ -87,7 +87,7 @@ fetch("https://wepaythefreight.com/footer.html")
 </div> <!-- END PAGE CONTENT -->
 
 
-<!-- SIDEBAR LOADER (EXPANDED VERSION) -->
+<!-- SIDEBAR LOADER (COLLAPSIBLE + EXPANDED) -->
 <script>
 async function buildSidebar() {
     const sidebar = document.getElementById("sidebar");
@@ -160,14 +160,16 @@ async function buildSidebar() {
         const files = groups[folder];
 
         sidebar.innerHTML += `
-            <div style="margin-top:20px;font-weight:bold;color:#b366ff;cursor:pointer;">
+            <div style="margin-top:20px;font-weight:bold;color:#b366ff;cursor:pointer;"
+                 onclick="this.nextElementSibling.style.display =
+                 (this.nextElementSibling.style.display === 'none' ? 'block' : 'none');">
                 ${folder} ▼
             </div>
             <div style="margin-left:10px;margin-top:5px;display:block;">
                 ${files.map(f => `
                     <a href="https://wepaythefreight.com/${folder}/${f}" 
                        style="color:#fff;text-decoration:none;display:block;margin:6px 0;">
-                        ${f.replace(".html","")}
+                        ${f.replace('.html','')}
                     </a>
                 `).join("")}
             </div>
