@@ -160,7 +160,7 @@
 
         <!-- SOCIAL LINKS CARD -->
         <div style="width:300px;background:#1a0f1a;padding:20px;border-radius:10px;
-                    border:2px solid:#0096FF;box-shadow:0 0 20px #0096FF;text-align:left;">
+                    border:2px solid #0096FF;box-shadow:0 0 20px #0096FF;text-align:left;">
             <h3 style="color:#0096FF;margin:0 0 10px;font-size:26px;font-weight:bold;text-align:center;">
                 Social Links
             </h3>
@@ -303,7 +303,7 @@ async function buildSidebar() {
             const folder = parts[0];
             const file = parts.slice(1).join("/");
             if (!groups[folder]) groups[folder] = [];
-            groups[folder].pushfile;
+            groups[folder].push(file); /* FIXED */
         }
     });
 
