@@ -342,7 +342,7 @@ async function buildSidebar() {
                  (this.nextElementSibling.style.display === 'none' ? 'block' : 'none');">
                 ${folder} ▼
             </div>
-            <div style="margin-left:10px;margin-top:5px;display:none;">
+            <div style="margin-left:10px;margin-top:5px;display:block;">
                 ${files.map(f => `
                     <a href="https://wepaythefreight.com/${folder}/${f}" style="color:#fff;text-decoration:none;display:block;margin:6px 0;">
                         ${f.replace(".html","")}
