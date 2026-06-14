@@ -76,8 +76,6 @@
 ">
     <h2 style="color:#0096FF;font-size:26px;margin-top:0;">Stand-Up Comedians</h2>
 
-<!--    <p>This shows ONLY the files inside the <strong>standup/</strong> folder.</p> -->
-
     <div id="tree-content" style="margin-top:20px;"></div>
 </div>
 
@@ -97,7 +95,7 @@ fetch("https://wepaythefreight.com/footer.html")
 </div> <!-- END PAGE CONTENT -->
 
 
-<!-- SIDEBAR LOADER (COLLAPSIBLE + EXPANDED) -->
+<!-- SIDEBAR LOADER (IMPROVED WITH CLEAN LABELS) -->
 <script>
 async function buildSidebar() {
     const sidebar = document.getElementById("sidebar");
@@ -153,12 +151,19 @@ async function buildSidebar() {
         </h2>
     `;
 
+    function cleanLabel(str) {
+        return str
+            .replace('.html','')
+            .replace(/_/g,' ')
+            .replace(/\b\w/g, c => c.toUpperCase());
+    }
+
     if (groups["_root"]) {
         groups["_root"].forEach(page => {
             sidebar.innerHTML += `
                 <a href="https://wepaythefreight.com/${page}" 
                    style="color:#0096FF;text-decoration:none;display:block;margin:10px 0;">
-                    ${page.replace(".html","")}
+                    ${cleanLabel(page)}
                 </a>
             `;
         });
@@ -173,13 +178,13 @@ async function buildSidebar() {
             <div style="margin-top:20px;font-weight:bold;color:#b366ff;cursor:pointer;"
                  onclick="this.nextElementSibling.style.display =
                  (this.nextElementSibling.style.display === 'none' ? 'block' : 'none');">
-                ${folder} ▼
+                ${cleanLabel(folder)} ▼
             </div>
             <div style="margin-left:10px;margin-top:5px;display:block;">
                 ${files.map(f => `
                     <a href="https://wepaythefreight.com/${folder}/${f}" 
                        style="color:#fff;text-decoration:none;display:block;margin:6px 0;">
-                        ${f.replace('.html','')}
+                        ${cleanLabel(f)}
                     </a>
                 `).join("")}
             </div>
@@ -207,7 +212,6 @@ async function buildTree() {
 
     const pages = data.pages || [];
 
-    // Only show files inside the standup folder
     const standupFiles = pages.filter(path => path.startsWith("standup/"));
 
     if (standupFiles.length === 0) {
