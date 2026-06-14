@@ -32,7 +32,7 @@
 <div style="margin-left:260px;">
 
 
-<!-- TOP BANNER (FIXED WITH HARD LINK) -->
+<!-- TOP BANNER -->
 <div style="background:#e8f3ff;text-align:center;padding:0;">
     <a href="https://wepaythefreight.com/index.html">
         <img src="https://wepaythefreight.com/images/WPTF-logo.png"
@@ -95,7 +95,7 @@ fetch("https://wepaythefreight.com/footer.html")
 </div> <!-- END PAGE CONTENT -->
 
 
-<!-- SIDEBAR LOADER (IMPROVED WITH CLEAN LABELS) -->
+<!-- ⭐ SIDEBAR LOADER — CLEAN LABELS, NO FOLDERS -->
 <script>
 async function buildSidebar() {
     const sidebar = document.getElementById("sidebar");
@@ -111,46 +111,13 @@ async function buildSidebar() {
 
     const pages = data.pages || [];
 
-    const HIDDEN_FOLDERS = ["amin","images"];
-    const HIDDEN_FILES = [
-        "FULL WPTF TEMPLATE WITH ALL ADMIN TOYS.html",
-        "tools - Copy.html",
-        "footer.html",
-        "index2.html",
-        "copilotbackupentrances.html"
-    ];
+    // ⭐ Only show comedian HTML files
+    const comedianFiles = pages.filter(path =>
+        path.startsWith("laughs/standup/comedians/") &&
+        path.endsWith(".html")
+    );
 
-    const allowed = pages.filter(path => {
-        const parts = path.split("/");
-        const isFile = path.includes("/");
-
-        if (HIDDEN_FOLDERS.some(f => path === f || path.startsWith(f + "/"))) return false;
-        if (HIDDEN_FILES.includes(path)) return false;
-        if (isFile && path.endsWith("index.html") && path !== "index.html") return false;
-
-        return true;
-    });
-
-    const groups = {};
-    allowed.forEach(path => {
-        const parts = path.split("/");
-        if (parts.length === 1) {
-            if (!groups["_root"]) groups["_root"] = [];
-            groups["_root"].push(parts[0]);
-        } else {
-            const folder = parts[0];
-            const file = parts.slice(1).join("/");
-            if (!groups[folder]) groups[folder] = [];
-            groups[folder].push(file);
-        }
-    });
-
-    sidebar.innerHTML = `
-        <h2 style="color:#b366ff;font-family:'Roboto Condensed',sans-serif;font-style:italic;margin-top:0;">
-            WPTF Menu
-        </h2>
-    `;
-
+    // ⭐ Clean label function
     function cleanLabel(str) {
         return str
             .replace('.html','')
@@ -158,45 +125,30 @@ async function buildSidebar() {
             .replace(/\b\w/g, c => c.toUpperCase());
     }
 
-    if (groups["_root"]) {
-        groups["_root"].forEach(page => {
-            sidebar.innerHTML += `
-                <a href="https://wepaythefreight.com/${page}" 
-                   style="color:#0096FF;text-decoration:none;display:block;margin:10px 0;">
-                    ${cleanLabel(page)}
-                </a>
-            `;
-        });
-    }
+    // ⭐ Sidebar title
+    sidebar.innerHTML = `
+        <h2 style="color:#b366ff;font-family:'Roboto Condensed',sans-serif;font-style:italic;margin-top:0;">
+            Stand-Up Comedians
+        </h2>
+    `;
 
-    Object.keys(groups).forEach(folder => {
-        if (folder === "_root") return;
-
-        const files = groups[folder];
+    // ⭐ Add each comedian
+    comedianFiles.forEach(fullPath => {
+        const filename = fullPath.replace("laughs/standup/comedians/", "");
 
         sidebar.innerHTML += `
-            <div style="margin-top:20px;font-weight:bold;color:#b366ff;cursor:pointer;"
-                 onclick="this.nextElementSibling.style.display =
-                 (this.nextElementSibling.style.display === 'none' ? 'block' : 'none');">
-                ${cleanLabel(folder)} ▼
-            </div>
-            <div style="margin-left:10px;margin-top:5px;display:block;">
-                ${files.map(f => `
-                    <a href="https://wepaythefreight.com/${folder}/${f}" 
-                       style="color:#fff;text-decoration:none;display:block;margin:6px 0;">
-                        ${cleanLabel(f)}
-                    </a>
-                `).join("")}
-            </div>
+            <a href="/${fullPath}"
+               style="color:#fff;text-decoration:none;display:block;margin:6px 0;">
+                ${cleanLabel(filename)}
+            </a>
         `;
     });
 }
-
 buildSidebar();
 </script>
 
 
-<!-- MAIN CONTENT TREE VIEW LOADER (ONLY standup/ FOLDER) -->
+<!-- ⭐ TREE VIEW — FIXED TO READ comedians/ FOLDER -->
 <script>
 async function buildTree() {
     const container = document.getElementById("tree-content");
@@ -212,23 +164,27 @@ async function buildTree() {
 
     const pages = data.pages || [];
 
-    const standupFiles = pages.filter(path => path.startsWith("standup/"));
+    // ⭐ Now show files inside the comedians folder
+    const standupFiles = pages.filter(path =>
+        path.startsWith("laughs/standup/comedians/") &&
+        path.endsWith(".html")
+    );
 
     if (standupFiles.length === 0) {
-        container.innerHTML = "<p>No files found in the standup folder.</p>";
+        container.innerHTML = "<p>No files found in the comedians folder.</p>";
         return;
     }
 
     let html = `
-        <h3 style="color:#0096FF;">standup/</h3>
+        <h3 style="color:#0096FF;">laughs/standup/comedians/</h3>
         <ul style="margin-left:20px;display:block;">
     `;
 
     standupFiles.forEach(file => {
-        const filename = file.replace("standup/", "");
+        const filename = file.replace("laughs/standup/comedians/", "");
         html += `
             <li>
-                <a href="https://wepaythefreight.com/${file}">
+                <a href="/${file}">
                     ${filename}
                 </a>
             </li>
