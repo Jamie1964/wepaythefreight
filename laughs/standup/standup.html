@@ -4,9 +4,13 @@
 <meta charset="UTF-8">
 <title>Stand-Up Comedians Directory</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Directory of stand-up comedians on WePayTheFreight.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap" rel="stylesheet">
 </head>
 
 <body style="margin:0;background:#e8f3ff;font-family:Arial,Helvetica,sans-serif;">
+
 
 <!-- SIDEBAR -->
 <div id="sidebar" style="
@@ -23,38 +27,61 @@
     z-index:9999;
 "></div>
 
+<!-- NEW SIDEBAR LOADER -->
 <script>
-fetch("sidebar.html")
+fetch("/laughs/sidebar.html")
   .then(r => r.text())
   .then(html => document.getElementById("sidebar").innerHTML = html);
 </script>
 
+
 <!-- PAGE CONTENT -->
 <div style="margin-left:260px;padding:40px;">
 
-    <h1 style="text-align:center;color:#0096FF;font-size:48px;margin-top:0;">
+
+<!-- TITLE BOX -->
+<div style="
+    max-width:900px;
+    margin:0 auto 40px;
+    padding:20px;
+    background:#e8f3ff;
+    border-radius:12px;
+    border:2px solid #0096FF;
+    box-shadow:
+        0 0 40px #0096FF,
+        0 0 80px #0096FF,
+        0 0 140px #0096FF;
+">
+    <h1 style="text-align:center;color:#0096FF;font-size:48px;margin:0;
+               font-family:'Times New Roman',serif;font-style:italic;">
         Stand-Up Comedians Directory
     </h1>
-
-    <div id="comedian-list" style="
-        max-width:900px;
-        margin:0 auto;
-        background:#fff;
-        padding:20px;
-        border-radius:10px;
-        border:2px solid #0096FF;
-        color:#333;
-        font-size:20px;
-        line-height:1.6;
-    ">
-        Loading comedians...
-    </div>
-
 </div>
 
+
+<!-- DIRECTORY LIST -->
+<div id="comedian-list" style="
+    max-width:900px;
+    margin:0 auto;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    border:2px solid #0096FF;
+    color:#333;
+    font-size:20px;
+    line-height:1.6;
+">
+    Loading comedians...
+</div>
+
+
+</div> <!-- END PAGE CONTENT -->
+
+
+<!-- AUTO‑LOAD COMEDIANS -->
 <script>
-// Load comedians from the comedians folder
-fetch("comedians/")
+// Load comedians from the correct folder
+fetch("/laughs/standup/comedians/")
   .then(r => r.text())
   .then(text => {
       const files = [...text.matchAll(/href="([^"]+\.html)"/g)]
@@ -72,13 +99,21 @@ fetch("comedians/")
       let html = "<ul>";
       for (const file of files) {
           const shortName = file.replace(".html", "");
-          html += `<li><a href="comedians/${file}">${shortName}</a></li>`;
+          html += `
+              <li>
+                  <a href="/laughs/standup/comedians/${file}" 
+                     style="color:#0096FF;text-decoration:none;">
+                      ${shortName}
+                  </a>
+              </li>
+          `;
       }
       html += "</ul>";
 
       document.getElementById("comedian-list").innerHTML = html;
   });
 </script>
+
 
 </body>
 </html>
