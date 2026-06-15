@@ -12,7 +12,7 @@
 <body style="margin:0;background:#e8f3ff;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
 
-<!-- SIDEBAR -->
+<!-- SIDEBAR (FETCHED FROM ONE FILE) -->
 <div id="sidebar" style="
     width:260px;
     background:#111;
@@ -27,6 +27,11 @@
     z-index:9999;
 "></div>
 
+<script>
+fetch("/laughs/sidebar.html")
+  .then(r => r.text())
+  .then(html => document.getElementById("sidebar").innerHTML = html);
+</script>
 
 <!-- PAGE CONTENT -->
 <div style="margin-left:260px;">
