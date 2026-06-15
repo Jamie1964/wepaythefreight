@@ -1,0 +1,55 @@
+<!-- SIDEBAR WRAPPER -->
+<div style="font-size:26px;font-weight:bold;color:#9cf;margin-bottom:25px;">
+    WPTF Menu
+</div>
+
+<!-- MAIN LINK GROUPS -->
+<div style="margin-bottom:20px;">
+    <div style="color:#7af;font-size:20px;margin-bottom:8px;">comedy</div>
+</div>
+
+<div style="margin-bottom:20px;">
+    <div style="color:#7af;font-size:20px;margin-bottom:8px;">tools</div>
+</div>
+
+<div style="margin-bottom:10px;">
+    <div style="color:#7af;font-size:20px;margin-bottom:8px;">laughs</div>
+
+    <!-- STANDUP DIRECTORY -->
+    <div style="margin-left:10px;margin-bottom:10px;">
+        <a href="../standup.html" style="color:#9cf;text-decoration:none;">
+            standup directory
+        </a>
+    </div>
+
+    <!-- AUTO‑GENERATED COMEDIAN LIST -->
+    <div id="comedian-list" style="margin-left:10px;font-size:16px;line-height:1.5;"></div>
+</div>
+
+<script>
+// Auto-load comedian filenames from the comedians folder
+fetch("comedians/")
+  .then(r => r.text())
+  .then(text => {
+      const files = [...text.matchAll(/href="([^"]+\.html)"/g)]
+                     .map(m => m[1])
+                     .filter(name => name !== "index.html");
+
+      files.sort();
+
+      let html = "";
+
+      for (const file of files) {
+          const shortName = file.replace(".html", "");
+          html += `
+            <div>
+                <a href="comedians/${file}" style="color:#fff;text-decoration:none;">
+                    ${shortName}
+                </a>
+            </div>
+          `;
+      }
+
+      document.getElementById("comedian-list").innerHTML = html;
+  });
+</script>
