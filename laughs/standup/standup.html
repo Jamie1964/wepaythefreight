@@ -28,7 +28,7 @@
 "></div>
 
 <script>
-fetch("/laughs/sidebar.html")
+fetch("/laughs/standup/sidebar.html")
   .then(r => r.text())
   .then(html => document.getElementById("sidebar").innerHTML = html);
 </script>
@@ -69,7 +69,7 @@ fetch("/laughs/sidebar.html")
 </div>
 
 
-<!-- MAIN CONTENT (MANUAL LIST) -->
+<!-- AUTO-GENERATED LIST -->
 <div style="
     max-width:900px;
     margin:0 auto 40px;
@@ -82,45 +82,50 @@ fetch("/laughs/sidebar.html")
 ">
     <h2 style="color:#0096FF;font-size:26px;margin-top:0;">Stand-Up Comedians</h2>
 
-    <ul style="margin-left:20px;">
-
-        <li><a href="/laughs/standup/comedians/adam_sandler.html">adam_sandler</a></li>
-        <li><a href="/laughs/standup/comedians/anjelah_johnson-reyes.html">anjelah_johnson-reyes</a></li>
-        <li><a href="/laughs/standup/comedians/anthony_jeselnik.html">anthony_jeselnik</a></li>
-        <li><a href="/laughs/standup/comedians/bill_burr.html">bill_burr</a></li>
-        <li><a href="/laughs/standup/comedians/brian_regan.html">brian_regan</a></li>
-        <li><a href="/laughs/standup/comedians/brian_scolaro.html">brian_scolaro</a></li>
-        <li><a href="/laughs/standup/comedians/carlos_mencia.html">carlos_mencia</a></li>
-        <li><a href="/laughs/standup/comedians/cedric_the_entertainer.html">cedric_the_entertainer</a></li>
-        <li><a href="/laughs/standup/comedians/chris_rock.html">chris_rock</a></li>
-        <li><a href="/laughs/standup/comedians/dave_chappelle.html">dave_chappelle</a></li>
-        <li><a href="/laughs/standup/comedians/eddie_murphy.html">eddie_murphy</a></li>
-        <li><a href="/laughs/standup/comedians/fluffy_gabriel_iglesias.html">fluffy_gabriel_iglesias</a></li>
-        <li><a href="/laughs/standup/comedians/gabriel_iglesias.html">gabriel_iglesias</a></li>
-        <li><a href="/laughs/standup/comedians/george_carlin.html">george_carlin</a></li>
-        <li><a href="/laughs/standup/comedians/george_lopez.html">george_lopez</a></li>
-        <li><a href="/laughs/standup/comedians/howie_mandel.html">howie_mandel</a></li>
-        <li><a href="/laughs/standup/comedians/iliza_shlesinger.html">iliza_shlesinger</a></li>
-        <li><a href="/laughs/standup/comedians/jo_koy.html">jo_koy</a></li>
-        <li><a href="/laughs/standup/comedians/kevin_hart.html">kevin_hart</a></li>
-        <li><a href="/laughs/standup/comedians/kevin_james.html">kevin_james</a></li>
-        <li><a href="/laughs/standup/comedians/lara_beitz.html">lara_beitz</a></li>
-        <li><a href="/laughs/standup/comedians/lewis_black.html">lewis_black</a></li>
-        <li><a href="/laughs/standup/comedians/matt_rife.html">matt_rife</a></li>
-        <li><a href="/laughs/standup/comedians/mitch_hedberg.html">mitch_hedberg</a></li>
-        <li><a href="/laughs/standup/comedians/nikki_glaser.html">nikki_glaser</a></li>
-        <li><a href="/laughs/standup/comedians/pete_davidson.html">pete_davidson</a></li>
-        <li><a href="/laughs/standup/comedians/ray_romano.html">ray_romano</a></li>
-        <li><a href="/laughs/standup/comedians/richard_pryor.html">richard_pryor</a></li>
-        <li><a href="/laughs/standup/comedians/robin_williams.html">robin_williams</a></li>
-        <li><a href="/laughs/standup/comedians/ron_white.html">ron_white</a></li>
-        <li><a href="/laughs/standup/comedians/saaniya_abbas.html">saaniya_abbas</a></li>
-        <li><a href="/laughs/standup/comedians/taylor_tomlinson.html">taylor_tomlinson</a></li>
-        <li><a href="/laughs/standup/comedians/whitney_cummings.html">whitney_cummings</a></li>
-
-    </ul>
-
+    <div id="comedian-list" style="margin-left:20px;font-size:18px;">
+        Loading comedians...
+    </div>
 </div>
+
+
+<script>
+// Auto-load comedian filenames from the folder
+fetch("/laughs/standup/comedians/")
+  .then(r => r.text())
+  .then(text => {
+      const files = [...text.matchAll(/href="([^"]+\.html)"/g)]
+                     .map(m => m[1])
+                     .filter(name => 
+                         name !== "index.html" &&
+                         !name.includes("Copy") &&
+                         !name.includes("aa- DIRECTORY")
+                     );
+
+      if (files.length === 0) {
+          document.getElementById("comedian-list").innerHTML =
+              "No comedian files found.";
+          return;
+      }
+
+      files.sort();
+
+      let html = "<ul>";
+      for (const file of files) {
+          const shortName = file.replace(".html", "");
+          html += `
+              <li>
+                  <a href="/laughs/standup/comedians/${file}" 
+                     style="color:#0096FF;text-decoration:none;">
+                      ${shortName}
+                  </a>
+              </li>
+          `;
+      }
+      html += "</ul>";
+
+      document.getElementById("comedian-list").innerHTML = html;
+  });
+</script>
 
 
 <!-- FOOTER LOADER -->
