@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!-- CONCERT-FILENAME-HERE.html -->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Last Updated: UPDATE-DATE-HERE -->
+
+<!-- SEO BLOCK -->
+<title>ARTIST – CONCERT NAME (YEAR) – LOCATION – Full Concert HD</title>
+
+<meta name="description" content="ARTIST performing CONCERT NAME live at LOCATION on DATE. Includes full concert video, background notes, production details, fun facts, and historical context.">
+
+<meta name="keywords" content="ARTIST, CONCERT NAME, YEAR concert, LOCATION concert, ARTIST live, ARTIST full concert, classic concerts">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="ARTIST – CONCERT NAME (YEAR) – Full Concert">
+<meta property="og:description" content="Full concert performance recorded live at LOCATION in YEAR.">
+<meta property="og:type" content="video.other">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ARTIST – CONCERT NAME (YEAR)">
+<meta name="twitter:description" content="Full concert performance recorded live at LOCATION in YEAR.">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicEvent",
+  "name": "CONCERT NAME",
+  "startDate": "YEAR-MO-DA",
+  "location": {
+    "@type": "Place",
+    "name": "LOCATION",
+    "address": "CITY, STATE/COUNTRY"
+  },
+  "performer": {
+    "@type": "MusicGroup",
+    "name": "ARTIST"
+  },
+  "description": "ARTIST performing CONCERT NAME live at LOCATION in YEAR. Includes full concert video, background notes, production details, fun facts, and historical context."
+}
+</script>
+
+<style>
+body {
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0d0d0d;
+    color:#fff;
+}
+.content {
+    max-width:1000px;
+    margin:0 auto;
+    padding:20px;
+    margin-left:280px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div id="concertSidebar"></div>
+<script>
+fetch("concerts-sidebar.html")
+  .then(r => r.text())
+  .then(html => { document.getElementById('concertSidebar').innerHTML = html; });
+</script>
+
+<!-- HEADER -->
+<div id="concertHeader"></div>
+<script>
+fetch("concerts-header.html")
+  .then(r => r.text())
+  .then(html => { document.getElementById('concertHeader').innerHTML = html; });
+</script>
+
+<div class="content">
+
+<!-- YOUTUBE LINK: replace ONLY the URL below -->
+<div style="text-align:center;margin:30px 0;padding-left:20px;padding-right:20px;">
+    <iframe width="100%" height="480"
+        src="https://www.youtube.com/embed/REPLACE-ME"
+        allowfullscreen
+        style="border-radius:12px;box-shadow:0 0 25px #66ccff;">
+    </iframe>
+</div>
+
+<!-- CONCERT DETAILS -->
+<div style="
+    background:#141414;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:30px;
+    font-size:18px;
+    line-height:1.6;
+">
+
+<h2 style="color:#66ccff;text-align:center;margin-bottom:20px;">
+    Concert Details
+</h2>
+
+<p><strong>Artist:</strong> ARTIST</p>
+<p><strong>Concert Name:</strong> CONCERT NAME</p>
+<p><strong>Year:</strong> YEAR</p>
+<p><strong>Venue:</strong> LOCATION</p>
+<p><strong>Date:</strong> DATE</p>
+
+<!-- Add your custom notes here -->
+
+</div>
+
+<!-- PAGE VIEW COUNTER -->
+<center>
+<div id="viewCounter" style="color:#aaa;font-size:14px;margin-top:20px;"></div>
+<script>
+let views = parseInt(localStorage.getItem("views_CONCERTID") || "0");
+views++;
+localStorage.setItem("views_CONCERTID", views);
+document.getElementById("viewCounter").textContent = "Page Views: " + views;
+</script>
+
+<!-- CONCERT-FILENAME-HERE.html -->
+</center>
+
+<!-- LAST UPDATED (BOTTOM OF PAGE) -->
+<center style="color:#888;font-size:14px;margin-top:10px;">
+Last Updated: UPDATE-DATE-HERE
+</center>
+
+<!-- FOOTER -->
+<div id="concertFooter"></div>
+<script>
+fetch("concerts-footer.html")
+  .then(r => r.text())
+  .then(html => { document.getElementById('concertFooter').innerHTML = html; });
+</script>
+
+</div><!-- END CONTENT -->
+
+</body>
+</html>

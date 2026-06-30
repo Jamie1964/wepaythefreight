@@ -1,0 +1,31 @@
+Concert System Rules:
+
+All concert pages must include the filename directly under <!DOCTYPE html> and again under the page‑view counter.
+
+All concert pages must include a Last Updated date at the bottom only.
+
+No hard links are allowed inside concert pages.
+
+Only the footer may contain the JP logo (hard link allowed).
+
+No borders unless the box has a background color.
+
+Video block must include left/right padding so it never touches the sidebar.
+
+YouTube embed URL must be easy to find and replace.
+
+All concert pages must use header/footer/sidebar loaders.
+
+All concert pages must use the dark theme.
+
+All concert pages must include a page‑view counter using localStorage.
+
+All concert pages must include a portable SEO block with no hard links.
+
+All concert pages must include portable JSON-LD with no hard links.
+
+All concert pages must be fully portable and folder‑based.
+
+Concert pages live in: /music/concerts/
+
+Template must follow the universal concerts layout.
