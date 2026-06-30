@@ -1,3 +1,4 @@
+<!-- FILENAME: music/concerts/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,33 +8,29 @@
 
 <body style="margin:0;background:#0d0d0d;color:#ffffff;font-family:Arial, sans-serif;">
 
-<!-- HEADER (same as Bee Gees) -->
-<div style="background:#0d0d0d;padding:20px;text-align:center;height:160px;">
-    <a href="/music/concerts/index.html">
-        <img src="/music/images/concerts-logo.png"
-             alt="Concerts"
-             style="height:100%;width:auto;">
-    </a>
-</div>
+<!-- HEADER (Bee Gees style, with huge banner inside) -->
+<div style="background:#0d0d0d;padding:20px;text-align:center;height:auto;">
 
-<!-- MAIN CONTENT (Bee Gees layout) -->
-<div id="main" style="padding:20px;text-align:center;">
-
-    <!-- Concert Room Banner (same size as Bee Gees image) -->
+    <!-- Concert Room Banner EXACT size as Bee Gees -->
     <img src="/music/images/concert-room-banner.png"
          alt="The Concert Room"
-         style="width:640px;height:auto;margin-top:20px;">
+         style="width:640px;height:auto;margin-bottom:20px;">
 
-    <h1 style="margin-top:30px;font-size:42px;letter-spacing:2px;">
+</div>
+
+<!-- MAIN CONTENT (Bee Gees spacing) -->
+<div id="main" style="padding:20px;text-align:center;">
+
+    <h1 style="margin-top:10px;font-size:42px;letter-spacing:2px;">
         The Concert Room
     </h1>
 
     <p style="font-size:20px;max-width:700px;margin:20px auto;line-height:1.6;">
-        Step inside <strong>The Concert Room</strong> — your archive of full-length
-        classic concerts. Legendary performances, iconic venues, timeless shows.
+        Welcome to <strong>The Concert Room</strong> — your archive of full-length
+        classic concerts. More shows will be added soon.
     </p>
 
-    <!-- Concert Links (Bee Gees spacing) -->
+    <!-- Only Bee Gees for now -->
     <div style="margin-top:40px;">
 
         <a href="/music/concerts/beegees.html"
@@ -41,21 +38,11 @@
            Bee Gees – Live in Concert
         </a>
 
-        <a href="/music/concerts/elvis.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           Elvis Presley – Full Show
-        </a>
-
-        <a href="/music/concerts/queen.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           Queen – Live Performance
-        </a>
-
     </div>
 
 </div>
 
-<!-- SIDEBAR LOADER (exact Bee Gees code) -->
+<!-- SIDEBAR LOADER (Bee Gees exact code) -->
 <script>
 fetch('/sidebar.html')
     .then(response => response.text())
@@ -85,5 +72,6 @@ fetch('/sidebar.html')
     </a>
 </div>
 
+<!-- END OF FILE: music/concerts/index.html -->
 </body>
 </html>
