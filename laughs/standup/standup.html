@@ -290,6 +290,9 @@ fetch("/laughs/standup/sidebar.html")
 </div> <!-- END MAIN CONTENT -->
 
 
+<div id="viewCounter" style="color:#aaa;font-size:14px;margin-top:20px;"></div>
+
+
 <!-- FOOTER -->
 <footer id="footer"></footer>
 
@@ -303,6 +306,17 @@ fetch("https://wepaythefreight.com/footer.html")
 
 
 </div> <!-- END PAGE CONTENT -->
+
+
+<script>
+let views = parseInt(localStorage.getItem("views_standup") || "0");
+views++;
+localStorage.setItem("views_standup", views);
+
+document.getElementById("viewCounter").textContent =
+    "Page Views: " + views;
+</script>
+
 
 </body>
 </html>
