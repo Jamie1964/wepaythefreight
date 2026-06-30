@@ -65,13 +65,16 @@ fetch('concerts-sidebar.html')
     </script>
 </div>
 
-<div style="background:#0d0d0d;padding:30px;text-align:center;margin-top:40px;">
-    <a href="https://wepaythefreight.com">
-        <img src="https://wepaythefreight.com/images/WPTF-logo.png"
-             alt="WePayTheFreight"
-             style="width:640px;height:auto;">
-    </a>
-</div>
+
+
+<div id="footer"></div>
+<script>
+fetch('concerts-footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer').innerHTML = t);
+</script>
+
+
 
 <!-- END OF FILE: music/concerts/index.html -->
 </body>
