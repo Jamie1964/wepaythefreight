@@ -9,17 +9,22 @@
 
 <body style="margin:0;background:#0d0d0d;color:#ffffff;font-family:Arial, sans-serif;">
 
-<!-- HEADER -->
-<div style="background:#0d0d0d;padding:20px;text-align:center;height:auto;">
+<div id="header"></div>
 
-    <img src="../images/concert-room-banner.png"
-         alt="The Concert Room"
-         style="width:640px;height:auto;margin-bottom:20px;">
 
-    <img src="../images/concerts-logo.png"
-         alt="Concerts"
-         style="width:640px;height:auto;margin-top:20px;">
-</div>
+
+<script>
+fetch('concerts-header.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('header').innerHTML = t);
+</script>
+
+
+
+
+
+
+
 
 <div id="main" style="padding:20px;text-align:center;">
 
