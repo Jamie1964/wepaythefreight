@@ -1,7 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="refresh" content="0; url=http://wepaythefreight.com">
+<meta charset="UTF-8">
+<title>The Concert Room</title>
 </head>
-<body></body>
+
+<body style="margin:0;background:#0d0d0d;color:#ffffff;font-family:Arial, sans-serif;">
+
+<!-- HEADER -->
+<div style="background:#0d0d0d;padding:20px;text-align:center;height:160px;">
+    <a href="/music/concerts/index.html">
+        <img src="/music/images/concerts-logo.png"
+             alt="Concerts"
+             style="height:100%;width:auto;">
+    </a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main" style="padding:20px;text-align:center;">
+
+    <!-- Concert Room Banner -->
+    <img src="/music/images/concert-room-banner.png"
+         alt="The Concert Room"
+         style="width:640px;height:auto;margin-top:20px;">
+
+    <h1 style="margin-top:30px;font-size:42px;letter-spacing:2px;">
+        The Concert Room
+    </h1>
+
+    <p style="font-size:20px;max-width:700px;margin:20px auto;line-height:1.6;">
+        Welcome to <strong>The Concert Room</strong> — a curated collection of full-length
+        classic concerts. From legendary rock venues to timeless performances, this is
+        where the complete shows live.
+    </p>
+
+    <!-- Concert List -->
+    <div style="margin-top:40px;">
+
+        <a href="/music/concerts/beegees.html"
+           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
+           Bee Gees – Live in Concert
+        </a>
+
+        <a href="/music/concerts/elvis.html"
+           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
+           Elvis Presley – Full Show
+        </a>
+
+        <a href="/music/concerts/queen.html"
+           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
+           Queen – Live Performance
+        </a>
+
+    </div>
+
+</div>
+
+<!-- SIDEBAR LOADER -->
+<script>
+fetch('/sidebar.html')
+    .then(response => response.text())
+    .then(data => {
+        const sidebar = document.createElement('div');
+        sidebar.innerHTML = data;
+        document.body.appendChild(sidebar);
+    });
+</script>
+
+<!-- PAGE VIEW COUNTER -->
+<div style="text-align:center;color:#888;margin-top:40px;">
+    <script>
+        let count = localStorage.getItem('concert_room_views') || 0;
+        count++;
+        localStorage.setItem('concert_room_views', count);
+        document.write("Page Views: " + count);
+    </script>
+</div>
+
+<!-- FOOTER -->
+<div style="background:#0d0d0d;padding:30px;text-align:center;margin-top:40px;">
+    <a href="https://wepaythefreight.com">
+        <img src="https://wepaythefreight.com/images/WPTF-logo.png"
+             alt="WePayTheFreight"
+             style="width:640px;height:auto;">
+    </a>
+</div>
+
+</body>
 </html>
