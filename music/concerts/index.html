@@ -11,18 +11,15 @@
 <!-- HEADER -->
 <div style="background:#0d0d0d;padding:20px;text-align:center;height:auto;">
 
-    <!-- Concert Room Banner -->
     <img src="../images/concert-room-banner.png"
          alt="The Concert Room"
          style="width:640px;height:auto;margin-bottom:20px;">
 
-    <!-- Concerts Logo -->
     <img src="../images/concerts-logo.png"
          alt="Concerts"
          style="width:640px;height:auto;margin-top:20px;">
 </div>
 
-<!-- MAIN CONTENT -->
 <div id="main" style="padding:20px;text-align:center;">
 
     <h1 style="margin-top:10px;font-size:42px;letter-spacing:2px;">
@@ -34,7 +31,6 @@
         classic concerts. More shows will be added soon.
     </p>
 
-    <!-- Correct Bee Gees link -->
     <div style="margin-top:40px;">
         <a href="beegees-1997-lasvegas-onenightonly.html"
            style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
@@ -44,9 +40,8 @@
 
 </div>
 
-<!-- SIDEBAR LOADER -->
 <script>
-fetch('../concerts-sidebar.html')
+fetch('concerts-sidebar.html')
     .then(response => response.text())
     .then(data => {
         const sidebar = document.createElement('div');
@@ -55,7 +50,6 @@ fetch('../concerts-sidebar.html')
     });
 </script>
 
-<!-- PAGE VIEW COUNTER -->
 <div style="text-align:center;color:#888;margin-top:40px;">
     <script>
         let count = localStorage.getItem('concert_room_views') || 0;
@@ -65,7 +59,6 @@ fetch('../concerts-sidebar.html')
     </script>
 </div>
 
-<!-- FOOTER -->
 <div style="background:#0d0d0d;padding:30px;text-align:center;margin-top:40px;">
     <a href="https://wepaythefreight.com">
         <img src="https://wepaythefreight.com/images/WPTF-logo.png"
