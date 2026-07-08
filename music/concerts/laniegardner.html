@@ -1,17 +1,13 @@
-<!-- FILE: lanie-gardner.html -->
 <!DOCTYPE html>
+<!-- FILE: lanie-gardner.html -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Last Updated: July 8, 2026 -->
-
-<!-- SEO BLOCK: Lanie Gardner Concert -->
+<!-- PORTABLE SEO BLOCK -->
 <title>Lanie Gardner – Featured Concert & Performances – Full HD</title>
-
 <meta name="description" content="Featured Lanie Gardner performances and concert videos. Includes full video embeds, background notes, production details, and fan context about this iconic vocal performance.">
-
 <meta name="keywords" content="Lanie Gardner, Lanie Gardner live, Lanie Gardner concert, Lanie Gardner cover, country music, classic rock covers, live music, full performance">
 
 <!-- OpenGraph -->
@@ -24,7 +20,7 @@
 <meta name="twitter:title" content="Lanie Gardner – Featured Concert & Performances">
 <meta name="twitter:description" content="Featured Lanie Gardner live performances and concert videos.">
 
-<!-- JSON-LD Structured Data -->
+<!-- PORTABLE JSON-LD STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,12 +53,33 @@ body {
     padding:20px;
     margin-left:280px; /* space for sidebar */
 }
+/* Video block padding rule so it never touches the sidebar */
+.video-container {
+    text-align:center;
+    margin:30px 0;
+    padding-left:20px;
+    padding-right:20px;
+}
+.video-embed {
+    width: 560px;
+    height: 315px;
+    border: 0;
+}
+.details-box {
+    background:#141414;
+    padding:25px;
+    border-radius:10px;
+    margin-bottom:30px;
+    font-size:18px;
+    line-height:1.6;
+    color:#fff;
+}
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
+<!-- SIDEBAR LOADER -->
 <div id="concertSidebar"></div>
 <script>
 fetch("concerts-sidebar.html")
@@ -70,7 +87,7 @@ fetch("concerts-sidebar.html")
   .then(html => { document.getElementById('concertSidebar').innerHTML = html; });
 </script>
 
-<!-- HEADER -->
+<!-- HEADER LOADER -->
 <div id="concertHeader"></div>
 <script>
 fetch("concerts-header.html")
@@ -80,113 +97,114 @@ fetch("concerts-header.html")
 
 <div class="content">
 
-<!-- YOUTUBE LINK 1 -->
-<div style="text-align:center;margin:30px 0;padding-left:20px;padding-right:20px;">
- <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+    <!-- YOUTUBE VIDEO 1 -->
+    <div class="video-container">
+        <iframe class="video-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="Lanie Gardner Performance 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 
-<!-- CONCERT DETAILS -->
-<div style="
-    background:#141414;
-    padding:25px;
-    border-radius:10px;
-    margin-bottom:30px;
-    font-size:18px;
-    line-height:1.6;
-    color:#fff;
-">
+    <!-- CONCERT DETAILS -->
+    <div class="details-box">
 
-    <h2 style="color:#66ccff;text-align:center;margin-bottom:20px;">
-        Concert Details
-    </h2>
+        <h2 style="color:#66ccff;text-align:center;margin-bottom:20px;">
+            Concert Details
+        </h2>
 
-    <p><strong>Artist:</strong> Lanie Gardner</p>
-    <p><strong>Concert Name:</strong> Live Performance Collection</p>
-    <p><strong>Year:</strong> 2024–2025</p>
-    <p><strong>Venue:</strong> Various live stages & studio sessions</p>
-    <p><strong>Date:</strong> Multiple appearances</p>
+        <p><strong>Artist:</strong> Lanie Gardner</p>
+        <p><strong>Concert Name:</strong> Live Performance Collection</p>
+        <p><strong>Year:</strong> 2024–2025</p>
+        <p><strong>Venue:</strong> Various live stages & studio sessions</p>
+        <p><strong>Date:</strong> Multiple appearances</p>
 
-    <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
-        Background & Performance Notes
-    </h3>
+        <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
+            Background & Performance Notes
+        </h3>
 
-    <p>
-        Lanie Gardner rose to global attention with her viral cover of Fleetwood Mac’s 
-        <em>Dreams</em>, earning praise from millions of listeners — including members of 
-        Fleetwood Mac themselves. Her voice blends modern pop clarity with classic rock warmth, 
-        creating a unique sound that resonates across generations.
-    </p>
+        <p>
+            Lanie Gardner rose to global attention with her viral cover of Fleetwood Mac’s 
+            <em>Dreams</em>, earning praise from millions of listeners — including members of 
+            Fleetwood Mac themselves. Her voice blends modern pop clarity with classic rock warmth, 
+            creating a unique sound that resonates across generations.
+        </p>
 
-    <p>
-        This concert collection highlights her strongest live performances, showcasing her 
-        vocal control, emotional delivery, and natural stage presence. Whether performing 
-        stripped‑down acoustic sets or full‑band arrangements, Lanie consistently delivers 
-        polished, heartfelt interpretations that connect deeply with audiences.
-    </p>
+        <p>
+            This concert collection highlights her strongest live performances, showcasing her 
+            vocal control, emotional delivery, and natural stage presence. Whether performing 
+            stripped‑down acoustic sets or full‑band arrangements, Lanie consistently delivers 
+            polished, heartfelt interpretations that connect deeply with audiences.
+        </p>
 
-    <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
-        Artistic Style & Influence
-    </h3>
+        <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
+            Artistic Style & Influence
+        </h3>
 
-    <p>
-        Lanie’s musical influences include Fleetwood Mac, classic rock harmonies, and 
-        contemporary pop production. Her tone is often compared to Stevie Nicks, yet she 
-        maintains a distinct modern identity through her phrasing, vocal texture, and 
-        songwriting approach.
-    </p>
+        <p>
+            Lanie’s musical influences include Fleetwood Mac, classic rock harmonies, and 
+            contemporary pop production. Her tone is often compared to Stevie Nicks, yet she 
+            maintains a distinct modern identity through her phrasing, vocal texture, and 
+            songwriting approach.
+        </p>
 
-    <p>
-        Her performances often feature warm acoustic guitars, atmospheric backing tracks, 
-        and clean vocal mixes that emphasize clarity and emotional depth.
-    </p>
+        <p>
+            Her performances often feature warm acoustic guitars, atmospheric backing tracks, 
+            and clean vocal mixes that emphasize clarity and emotional depth.
+        </p>
 
-    <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
-        Fun Facts & Trivia
-    </h3>
+        <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
+            Fun Facts & Trivia
+        </h3>
 
-    <ul style="font-size:18px;line-height:1.6;color:#fff;">
-        <li>Her cover of <em>Dreams</em> surpassed 50 million views across platforms.</li>
-        <li>She has collaborated with major producers and artists after her viral breakout.</li>
-        <li>Lanie’s live performances often include re‑imagined versions of classic rock hits.</li>
-        <li>Her vocal tone is frequently praised for its warmth, control, and emotional clarity.</li>
-        <li>She continues to build a dedicated fanbase through consistent live sessions and studio releases.</li>
-    </ul>
+        <ul style="font-size:18px;line-height:1.6;color:#fff;">
+            <li>Her cover of <em>Dreams</em> surpassed 50 million views across platforms.</li>
+            <li>She has collaborated with major producers and artists after her viral breakout.</li>
+            <li>Lanie’s live performances often include re‑imagined versions of classic rock hits.</li>
+            <li>Her vocal tone is frequently praised for its warmth, control, and emotional clarity.</li>
+            <li>She continues to build a dedicated fanbase through consistent live sessions and studio releases.</li>
+        </ul>
 
-    <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
-        Spotlight
-    </h3>
+        <h3 style="color:#66ccff;margin-top:25px;margin-bottom:10px;">
+            Spotlight
+        </h3>
 
-    <p>
-        <strong>Lanie Gardner</strong> — Lead vocals, songwriter. Known for her smooth tone, 
-        emotional phrasing, and modern‑classic crossover style.
-    </p>
+        <p>
+            <strong>Lanie Gardner</strong> — Lead vocals, songwriter. Known for her smooth tone, 
+            emotional phrasing, and modern‑classic crossover style.
+        </p>
 
-</div>
+    </div>
 
-<!-- YOUTUBE LINK 2 -->
-<div style="text-align:center;margin:30px 0;padding-left:20px;padding-right:20px;">
- <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+    <!-- YOUTUBE VIDEO 2 -->
+    <div class="video-container">
+        <iframe class="video-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="Lanie Gardner Performance 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
 
-<!-- Page View Counter -->
-<div style="text-align:center; margin:40px 0; color:#ccc; font-size:18px;">
-    Views: <span id="pageCounter">0</span>
-</div>
-<script>
-    let pageId = "lanie-gardner";
-    let count = localStorage.getItem(pageId) || 0;
-    count++;
-    localStorage.setItem(pageId, count);
-    document.getElementById("pageCounter").innerText = count;
-</script>
+    <!-- LOCALSTORAGE COUNTER -->
+    <div style="text-align:center; margin:40px 0; color:#ccc; font-size:18px;">
+        Views: <span id="pageCounter">0</span>
+    </div>
+    <script>
+        let pageId = "lanie-gardner";
+        let count = localStorage.getItem(pageId) || 0;
+        count++;
+        localStorage.setItem(pageId, count);
+        document.getElementById("pageCounter").innerText = count;
+    </script>
+    
+    <!-- FILE: lanie-gardner.html -->
 
-<!-- Last Updated -->
-<div style="text-align:center; margin-bottom:40px; color:#777;">
-    Last Updated: July 8, 2026
-</div>
+    <!-- LAST UPDATED (Bottom Only) -->
+    <div style="text-align:center; margin-bottom:40px; color:#777;">
+        Last Updated: July 8, 2026
+    </div>
+
+    <!-- FOOTER LOADER -->
+    <div id="concertFooter"></div>
+    <script>
+    fetch("concerts-footer.html")
+      .then(r => r.text())
+      .then(html => { document.getElementById('concertFooter').innerHTML = html; });
+    </script>
 
 </div>
 
 </body>
 </html>
-<!-- FILE END: lanie-gardner.html -->
