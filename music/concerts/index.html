@@ -11,20 +11,11 @@
 
 <div id="header"></div>
 
-
-
 <script>
 fetch('concerts-header.html')
     .then(r => r.text())
     .then(t => document.getElementById('header').innerHTML = t);
 </script>
-
-
-
-
-
-
-
 
 <div id="main" style="padding:20px;text-align:center;">
 
@@ -41,6 +32,10 @@ fetch('concerts-header.html')
         <a href="beegees-1997-lasvegas-onenightonly.html"
            style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
            Bee Gees – One Night Only (1997)
+        </a>
+        <a href="Lanie Gardner - A Songwriter’s Diary, Bonfire Sessions.html"
+           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
+           Lanie Gardner – Bonfire Sessions
         </a>
     </div>
 
@@ -67,9 +62,8 @@ fetch('concerts-sidebar.html')
 
 <!-- PAGE LAST UPDATED -->
 <div id="page-updated" style="text-align:center;color:#888;margin-top:20px;">
-    last updated: June 30, 2026 — 4:46 AM MDT
+    last updated: July 8, 2026 — 5:10 PM MDT
 </div>
-
 
 <div id="footer"></div>
 <script>
@@ -77,8 +71,6 @@ fetch('concerts-footer.html')
     .then(r => r.text())
     .then(t => document.getElementById('footer').innerHTML = t);
 </script>
-
-
 
 <!-- END OF FILE: music/concerts/index.html -->
 </body>
