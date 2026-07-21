@@ -360,20 +360,6 @@ We’ll show you how to get free stuff — starting with free money.
 </div>
 
 
-<!-- PAGE VIEW COUNTER -->
-<div id="page-counter" style="text-align:center;color:#888;margin-top:10px;">
-    views: loading...
-</div>
-
-<script>
-const PAGE_ID = "wptf-index";
-const COUNTER_KEY = PAGE_ID + "-views";
-let views = localStorage.getItem(COUNTER_KEY);
-if (!views) views = 0;
-views++;
-localStorage.setItem(COUNTER_KEY, views);
-document.getElementById("page-counter").textContent = "views: " + views;
-</script>
 
 
 <!-- FOOTER LOADER -->
