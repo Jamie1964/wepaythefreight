@@ -353,34 +353,27 @@ We’ll show you how to get free stuff — starting with free money.
 </div> <!-- END PURPLE BOX -->
 
 
-
 <!-- TIMESTAMP -->
 <div id="page-updated" style="text-align:center;color:#888;margin-top:20px;">
-    last updated: June 30, 2026 — 4:14 AM MDT
+    last updated: July 21, 2026 — 1:01 AM MDT
 </div>
 
-
-
-
+  </div>
+  
 <!-- FOOTER LOADER -->
 <footer id="footer"></footer>
-
 <script>
-fetch('/footer.html')
-  .then(r => r.text())
-  .then(html => {
+  fetch("https://giggle-factory.com/footer.html") // Or "/footer.html" depending on where the file resides
+    .then(r => {
+      if (!r.ok) throw new Error("Footer file not found");
+      return r.text();
+    })
+    .then(html => {
       document.getElementById('footer').innerHTML = html;
-
-      const FOOTER_KEY = "global-footer-loads";
-      let fcount = localStorage.getItem(FOOTER_KEY);
-      if (!fcount) fcount = 0;
-      fcount++;
-      localStorage.setItem(FOOTER_KEY, fcount);
-  });
+    })
+    .catch(err => console.error("Error loading footer:", err));
 </script>
 
-
-</div> <!-- END PAGE WRAPPER -->
 
 </body>
 </html>
