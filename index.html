@@ -361,17 +361,27 @@ We’ll show you how to get free stuff — starting with free money.
   </div>
   
 <!-- FOOTER LOADER -->
-<footer id="footer"></footer>
+
+<div id="footer"></div>
+
 <script>
-  fetch("https://giggle-factory.com/footer.html") // Or "/footer.html" depending on where the file resides
-    .then(r => {
-      if (!r.ok) throw new Error("Footer file not found");
-      return r.text();
-    })
+  fetch('footer.html')
+    .then(r => r.text())
     .then(html => {
       document.getElementById('footer').innerHTML = html;
+
+      // NOW the footer exists — safe to run the counter
+      const domain = window.location.hostname.replace(/\./g, "_");
+      const page = window.location.pathname.replace(/\//g, "_") || "home";
+      const counterKey = "pv_" + domain + "_" + page;
+
+      let views = localStorage.getItem(counterKey);
+      views = views ? parseInt(views) + 1 : 1;
+      localStorage.setItem(counterKey, views);
+
+      document.getElementById("viewCounter").innerText = "Views: " + views;
     })
-    .catch(err => console.error("Error loading footer:", err));
+    .catch(err => console.error("Footer failed to load:", err));
 </script>
 
 
