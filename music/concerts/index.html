@@ -1,89 +1,16 @@
-<!-- FILENAME: music/concerts/index.html -->
+<!-- https://wepaythefreight.com/index.html -->
+<!-- August 29, 2026 — 6:18 PM MDT -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" href="data:,">
 <meta charset="UTF-8">
-<title>The Concert Room</title>
+<meta http-equiv="refresh" content="0;url=https://jamiestunes.com">
+<title>WePayTheFreight.com — Redirecting...</title>
 </head>
-
-<body style="margin:0;background:#0d0d0d;color:#ffffff;font-family:Arial, sans-serif;">
-
-<div id="header"></div>
-
-<script>
-fetch('concerts-header.html')
-    .then(r => r.text())
-    .then(t => document.getElementById('header').innerHTML = t);
-</script>
-
-<div id="main" style="padding:20px;text-align:center;">
-
-    <h1 style="margin-top:10px;font-size:42px;letter-spacing:2px;">
-        The Concert Room
-    </h1>
-
-    <p style="font-size:20px;max-width:700px;margin:20px auto;line-height:1.6;">
-        Welcome to <strong>The Concert Room</strong> — your archive of full-length
-        classic concerts. More shows will be added soon.
-    </p>
-
-    <div style="margin-top:40px;">
-        <a href="AC-DC - Live At River Plate 2009.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           AC/DC – Live at River Plate (2009)
-        </a>
-        <a href="Amy Winehouse - Glastonbury 2008.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           Amy Winehouse – Glastonbury 2008
-        </a>
-        <a href="beegees-1997-lasvegas-onenightonly.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           Bee Gees – One Night Only (1997)
-        </a>
-        <a href="Bruce Springsteen and The E Street Band Live in New York City.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           Bruce Springsteen – Live in NYC (2000)
-        </a>
-        <a href="Lanie Gardner - A Songwriter’s Diary, Bonfire Sessions.html"
-           style="display:block;color:#ffd700;font-size:24px;margin:15px 0;text-decoration:none;">
-           Lanie Gardner – Bonfire Sessions
-        </a>
-    </div>
-
-</div>
-
-<script>
-fetch('concerts-sidebar.html')
-    .then(response => response.text())
-    .then(data => {
-        const sidebar = document.createElement('div');
-        sidebar.innerHTML = data;
-        document.body.appendChild(sidebar);
-    });
-</script>
-
-<div style="text-align:center;color:#888;margin-top:40px;">
+<body style="margin:0;background:#121212;color:#fff;font-family:Arial,Helvetica,sans-serif;text-align:center;padding-top:100px;">
+    <p>Redirecting to <a href="https://jamiestunes.com" style="color:#1e90ff;">jamiestunes.com</a>...</p>
     <script>
-        let count = localStorage.getItem('concert_room_views') || 0;
-        count++;
-        localStorage.setItem('concert_room_views', count);
-        document.write("Page Views: " + count);
+        window.location.replace("https://jamiestunes.com");
     </script>
-</div>
-
-<!-- PAGE LAST UPDATED -->
-<div id="page-updated" style="text-align:center;color:#888;margin-top:20px;">
-    last updated: July 8, 2026 — 6:19 PM MDT
-</div>
-
-<div id="footer"></div>
-<script>
-fetch('concerts-footer.html')
-    .then(r => r.text())
-    .then(t => document.getElementById('footer').innerHTML = t);
-</script>
-
-<!-- END OF FILE: music/concerts/index.html -->
 </body>
 </html>
