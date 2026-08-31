@@ -242,7 +242,7 @@ fetch("sidebar.html")
 
       const viewCounterEl = document.getElementById("viewCounter");
       if(viewCounterEl) {
-          viewCounterEl.innerText = "Views: ` + views + `";
+          viewCounterEl.innerText = "Views: " + views;
       }
     })
     .catch(err => console.error("Footer failed to load:", err));
